@@ -36,4 +36,18 @@ router.delete("/:id", (req, res) => {
     })
 })
 
+function validateProject(req, res, next) {
+  Projects.findById(req.params.id)
+    .then(res => {
+      console.log(res)
+      if(res) {
+        req.project = res;
+        next();
+      } else {
+        res.status(400).json({ message: "No Project with this ID" })
+      }
+    })
+    .catch(err => res.status(500))
+}
+
 module.exports = router;

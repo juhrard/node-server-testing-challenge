@@ -42,7 +42,7 @@ describe("projects router", function() {
   describe("POST /api/projects", function() {
     it("should return 201 OK", function() {
       return request(server)
-        .post("/api/projects").send({name: "test3", description: "test"})
+        .post("/api/projects").send({name: "testtest", description: "test"})
         .then(res => {
           expect(res.status).toBe(201);
         });
@@ -50,6 +50,13 @@ describe("projects router", function() {
   });
 
   describe("UPDATE /api/projects", function() {
+    it("should return 201 OK", function() {
+      return request(server)
+        .put("/api/projects/1").send({name: "test2", description: "test2"})
+        .then(res => {
+          expect(res.status).toBe(200);
+        });
+    });
     it("should return 201 OK", function() {
       return request(server)
         .put("/api/projects/1").send({name: "test2", description: "test2"})
@@ -65,6 +72,13 @@ describe("projects router", function() {
         .delete("/api/projects/1")
         .then(res => {
           expect(res.status).toBe(200);
+        });
+    });
+    it("should return 201 OK", function() {
+      return request(server)
+        .get("/api/projects/1")
+        .then(res => {
+          expect(res.status).toBe(404);
         });
     });
   });
