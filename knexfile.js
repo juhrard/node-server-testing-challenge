@@ -3,8 +3,11 @@
 module.exports = {
 
   development: {
-    client: 'pg',
-    connection: "postgresql://localhost/projects",
+    client: 'sqlite3',
+    useNullAsDefault: true,
+    connection: {
+      filename: './database/projects.db3',
+    },
     pool: {
       min: 2,
       max: 10,
@@ -16,8 +19,11 @@ module.exports = {
   },
 
   testing: {
-    client: "pg",
-    connection: "postgresql://localhost/testing",
+    client: "sqlite3",
+    useNullAsDefault: true,
+    connection: {
+      filename: './database/projects.db3',
+    },
     pool: {
       min: 2,
       max: 10,
@@ -29,8 +35,11 @@ module.exports = {
   },
 
   production: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
+    client: 'sqlite3',
+    useNullAsDefault: true,
+    connection: {
+      filename: './database/projects.db3',
+    },
     // connection: {
     //   database: 'my_db',
     //   user:     'username',

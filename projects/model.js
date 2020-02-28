@@ -25,10 +25,8 @@ function update(id, project) {
   return db('projects').where('id', id).update(project)
 }
 
-async function add(user) {
-  const [id] = await db('projects').insert(user);
-
-  return findById(id);
+function add(project) {
+  return db('projects').insert(project);
 }
 
 function findById(id) {

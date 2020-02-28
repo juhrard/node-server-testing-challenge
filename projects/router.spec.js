@@ -38,4 +38,34 @@ describe("projects router", function() {
       expect(Array.isArray(res.body)).toBe(true);
     });
   });
+
+  describe("POST /api/projects", function() {
+    it("should return 201 OK", function() {
+      return request(server)
+        .post("/api/projects").send({name: "test3", description: "test"})
+        .then(res => {
+          expect(res.status).toBe(201);
+        });
+    });
+  });
+
+  describe("UPDATE /api/projects", function() {
+    it("should return 201 OK", function() {
+      return request(server)
+        .put("/api/projects/1").send({name: "test2", description: "test2"})
+        .then(res => {
+          expect(res.status).toBe(200);
+        });
+    });
+  });
+
+  describe("DELETE /api/projects", function() {
+    it("should return 201 OK", function() {
+      return request(server)
+        .delete("/api/projects/1")
+        .then(res => {
+          expect(res.status).toBe(200);
+        });
+    });
+  });
 });
